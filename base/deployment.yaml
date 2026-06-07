@@ -31,7 +31,7 @@ spec:
           value: pass
         - name: MYSQL_USER
           value: user
-        image: ' '
+        image: registry.redhat.io/rhel8/mysql-80
         name: mysql
         ports:
         - containerPort: 3306
