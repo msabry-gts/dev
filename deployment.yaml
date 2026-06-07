@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mysql
+    app.kubernetes.io/component: mysql
+    app.kubernetes.io/instance: mysql
+    db: mysql
+  name: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      db: mysql
+      deployment: mysql
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      creationTimestamp: null
+      labels:
+        db: mysql
+        deployment: mysql
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_DATABASE
+          value: testdb
+        - name: MYSQL_PASSWORD
+          value: pass
+        - name: MYSQL_USER
+          value: user
+        image: ' '
+        name: mysql
+        ports:
+        - containerPort: 3306
+          protocol: TCP
+        resources: {}
